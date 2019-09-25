@@ -68,7 +68,7 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Meal TIme" id="YfH-nX-svh">
-                        <barButtonItem key="leftBarButtonItem" springLoaded="YES" systemItem="organize" id="DSr-wl-G27">
+                        <barButtonItem key="leftBarButtonItem" image="menu" springLoaded="YES" id="DSr-wl-G27">
                             <connections>
                                 <segue destination="SaC-t2-Hwe" kind="show" id="cMy-Z3-jKD"/>
                             </connections>
@@ -225,4 +225,7 @@
             <point key="canvasLocation" x="134.78260869565219" y="759.375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="menu" width="267" height="267"/>
+    </resources>
 </document>
