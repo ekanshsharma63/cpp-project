@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class ViewController: UIViewController, CLLocationManagerDelegate  {
+class MainViewController: UIViewController, CLLocationManagerDelegate  {
 
         
     
@@ -19,11 +19,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate  {
     let manager = CLLocationManager()
        
        func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
-             
+            
              {
-                let location = locations[0]
+              let location = locations[0]
                        
-                 let span:MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+                 let span:MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.04, longitudeDelta: 0.04)
                        
                        let myLocation: CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
                        let region:MKCoordinateRegion = MKCoordinateRegion(center: myLocation, span: span)
@@ -34,7 +34,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate  {
    
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
        
@@ -43,6 +42,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate  {
         manager.requestWhenInUseAuthorization()
         manager.startUpdatingLocation()
     }
+    
+   /* @IBAction func any(_sender: UIButton) {
+        
+    } */
     
 
 
