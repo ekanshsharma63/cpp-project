@@ -37,15 +37,15 @@ class MainViewController: UIViewController, CLLocationManagerDelegate  {
     override func viewDidLoad() {
         super.viewDidLoad()
        
-        manager.delegate = self
-        manager.desiredAccuracy = kCLLocationAccuracyBest
-        manager.requestWhenInUseAuthorization()
-        manager.startUpdatingLocation()
+       
     }
     
-   /* @IBAction func any(_sender: UIButton) {
-        
-    } */
+    @IBAction func any(_sender: UIButton) {
+        manager.delegate = self
+               manager.desiredAccuracy = kCLLocationAccuracyBest
+               manager.requestWhenInUseAuthorization()
+               manager.startUpdatingLocation()
+    }
     
 
 
