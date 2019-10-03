@@ -17,6 +17,11 @@
 		AD17E4032332EA7800FA5E1A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD17E4012332EA7800FA5E1A /* Main.storyboard */; };
 		AD17E4052332EA7900FA5E1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD17E4042332EA7900FA5E1A /* Assets.xcassets */; };
 		AD17E4082332EA7900FA5E1A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD17E4062332EA7900FA5E1A /* LaunchScreen.storyboard */; };
+		FAE14AD423466E4B000E9D9E /* User.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FAE14AD223466E4B000E9D9E /* User.xcdatamodeld */; };
+		FAE14AD6234677E2000E9D9E /* SwiftAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE14AD5234677E2000E9D9E /* SwiftAlert.swift */; };
+		FAE14AD823468705000E9D9E /* RideDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE14AD723468705000E9D9E /* RideDetailsVC.swift */; };
+		FAE14ADA23468ECE000E9D9E /* OrderMyMealVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE14AD923468ECE000E9D9E /* OrderMyMealVC.swift */; };
+		FAE14ADC23468F8F000E9D9E /* OrderMyMealCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE14ADB23468F8F000E9D9E /* OrderMyMealCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +37,11 @@
 		AD17E4042332EA7900FA5E1A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AD17E4072332EA7900FA5E1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AD17E4092332EA7900FA5E1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAE14AD323466E4B000E9D9E /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		FAE14AD5234677E2000E9D9E /* SwiftAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftAlert.swift; sourceTree = "<group>"; };
+		FAE14AD723468705000E9D9E /* RideDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideDetailsVC.swift; sourceTree = "<group>"; };
+		FAE14AD923468ECE000E9D9E /* OrderMyMealVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderMyMealVC.swift; sourceTree = "<group>"; };
+		FAE14ADB23468F8F000E9D9E /* OrderMyMealCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderMyMealCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,16 +84,21 @@
 		AD17E3FC2332EA7800FA5E1A /* menu */ = {
 			isa = PBXGroup;
 			children = (
+				FAE14AD223466E4B000E9D9E /* User.xcdatamodeld */,
 				AD17E3FD2332EA7800FA5E1A /* AppDelegate.swift */,
-				AD17E3FF2332EA7800FA5E1A /* ViewController.swift */,
 				AD17E4012332EA7800FA5E1A /* Main.storyboard */,
 				AD17E4042332EA7900FA5E1A /* Assets.xcassets */,
 				AD17E4062332EA7900FA5E1A /* LaunchScreen.storyboard */,
 				AD17E4092332EA7900FA5E1A /* Info.plist */,
+				FAE14AD923468ECE000E9D9E /* OrderMyMealVC.swift */,
+				FAE14ADB23468F8F000E9D9E /* OrderMyMealCell.swift */,
+				FAE14AD723468705000E9D9E /* RideDetailsVC.swift */,
+				AD17E3FF2332EA7800FA5E1A /* ViewController.swift */,
 				42B04D3B233C0B3200438EF1 /* ProfileViewController.swift */,
 				42B04D3D233C143000438EF1 /* PaymentViewController.swift */,
 				42B04D42233D3F1900438EF1 /* CuisineViewController.swift */,
 				42B04D44233D3FBC00438EF1 /* ReleaseViewController.swift */,
+				FAE14AD5234677E2000E9D9E /* SwiftAlert.swift */,
 			);
 			path = menu;
 			sourceTree = "<group>";
@@ -159,9 +174,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAE14AD6234677E2000E9D9E /* SwiftAlert.swift in Sources */,
 				42B04D3C233C0B3200438EF1 /* ProfileViewController.swift in Sources */,
+				FAE14ADC23468F8F000E9D9E /* OrderMyMealCell.swift in Sources */,
+				FAE14ADA23468ECE000E9D9E /* OrderMyMealVC.swift in Sources */,
 				42B04D43233D3F1900438EF1 /* CuisineViewController.swift in Sources */,
 				AD17E4002332EA7800FA5E1A /* ViewController.swift in Sources */,
+				FAE14AD823468705000E9D9E /* RideDetailsVC.swift in Sources */,
+				FAE14AD423466E4B000E9D9E /* User.xcdatamodeld in Sources */,
 				AD17E3FE2332EA7800FA5E1A /* AppDelegate.swift in Sources */,
 				42B04D45233D3FBC00438EF1 /* ReleaseViewController.swift in Sources */,
 				42B04D3E233C143000438EF1 /* PaymentViewController.swift in Sources */,
@@ -241,7 +261,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -296,7 +316,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -310,15 +330,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W3N8CDVQB6;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = menu/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = madt.project;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -328,15 +351,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W3N8CDVQB6;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = menu/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = madt.project;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -364,6 +390,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FAE14AD223466E4B000E9D9E /* User.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FAE14AD323466E4B000E9D9E /* Model.xcdatamodel */,
+			);
+			currentVersion = FAE14AD323466E4B000E9D9E /* Model.xcdatamodel */;
+			path = User.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = AD17E3F22332EA7800FA5E1A /* Project object */;
 }
