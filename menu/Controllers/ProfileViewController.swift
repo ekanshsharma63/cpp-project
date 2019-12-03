@@ -20,10 +20,12 @@ class ProfileViewController: UIViewController{
     @IBOutlet weak var fName: UITextField!
     @IBOutlet weak var lName: UITextField!
     
+    let userDB = DB_User()
+
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var imagePicker = UIImagePickerController()
     var newUser = NSManagedObject()
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+  
     var userInformationArray = [NSManagedObject]()
 
     override func viewDidLoad() {
@@ -31,33 +33,13 @@ class ProfileViewController: UIViewController{
         configureNavBar()
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
-        
-        let fetchRequest = NSFetchRequest <NSFetchRequestResult> (entityName: "User")
-        fetchRequest.returnsObjectsAsFaults = false
-        let context = appDelegate.persistentContainer.viewContext
-        
-        do {
-            let results = try context.fetch(fetchRequest)
-            // check data existance
-            if results.count>0 {
-                var fetchedProfileImage = [UIImage]()
-                for resultGot in results as! [NSManagedObject]{
-                    userInformationArray.append(resultGot)
-                    print("my array is : \(userInformationArray )")
-                    for dict in userInformationArray{
-                        fName.text = dict.value(forKey: "fname") as? String
-                        lName.text = dict.value(forKey: "lname") as? String
-                        //added this is convert the image
-                        let profileImageData = dict.value(forKey: "img") as? Data ?? Data()
-                        self.profileImage.image = UIImage(data: profileImageData)
-
-                    }
-                }
-              }
-        }catch{
-            print("No Data to load")
+        let dd = userDB.executeQuery()
+        let row = dd.last
+        self.fName.text = row?.fname
+            self.lName.text = row?.lname
+            self.profileImage.image = row?.profileImg
+            print("\(row?.fname)","\(row?.lname)","\(row?.profileImg)")
         }
-    }
     
     func configureNavBar() {
         navigationItem.title = "PROFILE"
@@ -67,8 +49,8 @@ class ProfileViewController: UIViewController{
         
         let alert = UIAlertController(title:"Menu App", message: "Choose Any Picture", preferredStyle: .actionSheet)
         let cameraAction = UIAlertAction(title:"Camera", style: .default) { (action) in
-            self.imagePicker.sourceType = .camera
-            self.present(self.imagePicker, animated: true, completion: nil)
+            //self.imagePicker.sourceType = .camera
+//            self.present(self.imagePicker, animated: true, completion: nil)
         }
         let galleryAction = UIAlertAction(title:"Gallery", style: .default) { (action) in
             self.imagePicker.sourceType = .photoLibrary
@@ -102,19 +84,13 @@ class ProfileViewController: UIViewController{
     
     @IBAction func saveProfile(_ sender: Any) {
         if valid(){
-            let newUser = NSEntityDescription.insertNewObject(forEntityName: "User", into: context)
-            newUser.setValue(fName.text, forKey: "fname")
-            newUser.setValue(lName.text, forKey: "lname")
-            
-//            let data = UIImage.jpegData(profileImage.image ?? UIImage())
-            let data = profileImage.image?.jpegData(compressionQuality: 0.1)
-            newUser.setValue(data, forKey: "img")
-            do{
-                try context.save()
-                SwiftAlert().show(title: "Menu App", message: "Profile Saved Successfully!", viewController: self) {
-                }
-            }catch{
-                print("failure")
+            if let fname = fName.text,let lname = lName.text{
+                
+                let _ = userDB.insertProfile(fname: fname, lname: lname, profileImg: profileImage.image ?? UIImage(named:"food")!)
+                SwiftAlert().show(title: "Menu App", message: "Profile Updated Successfully!", viewController: self, okAction: {
+                    self.navigationController?.popViewController(animated: true)
+                    
+                })
             }
         }
     }

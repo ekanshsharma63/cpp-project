@@ -10,6 +10,13 @@ import UIKit
 
 class OrderMyMealCell: UITableViewCell {
 
+    
+    @IBOutlet weak var lbl_mealType: UILabel!
+    @IBOutlet weak var lbl_quantity: UILabel!
+    @IBOutlet weak var butn_Increment: UIButton!
+    @IBOutlet weak var butn_decrement: UIButton!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

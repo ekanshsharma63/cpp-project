@@ -8,88 +8,104 @@
 
 import UIKit
 import CoreData
+import GooglePlaces
+import GoogleMaps
+import IQKeyboardManagerSwift
 
+
+let appDelegate = (UIApplication.shared.delegate as? AppDelegate)
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+
+class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate {
 
     var window: UIWindow?
-
+    let userDB = DB_User()
+    var currentLocation : CLLocation?
+    var locationManager : CLLocationManager?
+    var currentLocationCoordinates = CLLocationCoordinate2D()
+    var int_distance = Int()
+    var address = String()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.enableAutoToolbar = false
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+        
+        print("didFinishLaunchingWithOptions")
+        GMSServices.provideAPIKey("AIzaSyBBmo2PYxM0xuXZVv7rakhJVxvkT4V52Yg")
+        GMSPlacesClient.provideAPIKey("AIzaSyBBmo2PYxM0xuXZVv7rakhJVxvkT4V52Yg")
+        
+        
+        //database and table setup
+//        do {
+//            let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+//            let fileUrl = documentDirectory.appendingPathComponent("usersDB").appendingPathExtension("sqlite3")
+//            //            let database = try Connection(fileUrl.path)
+//            //            self.database = database
+//        } catch {
+//            print("error during database connection",error)
+//        }
+        
+        //        createTable()
+        userDB.createTable()
+        userDB.createTableForMeal()
+        location()
         // Override point for customization after application launch.
         return true
     }
-
+    // MARK: - Location Manager -
+    func location(){
+        currentLocation = CLLocation(latitude: 0, longitude: 0)
+        
+        locationManager = CLLocationManager()
+        locationManager?.delegate = self
+        self.locationManager?.requestAlwaysAuthorization()
+        locationManager?.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager?.startUpdatingLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let userLocation = locations.last
+        let center = CLLocationCoordinate2D(latitude: userLocation!.coordinate.latitude, longitude: userLocation!.coordinate.longitude)
+        currentLocationCoordinates = center
+        locationManager?.stopUpdatingLocation()
+    }
+    
     func applicationWillResignActive(_ application: UIApplication) {
+        print(" applicationWillResignActive")
+
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
+        print(" applicationDidEnterBackground")
+
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
+        print(" applicationWillEnterForeground")
+
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
+        print(" applicationDidBecomeActive")
+
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        self.saveContext()
+        print(" applicationWillTerminate")
+
+        //self.saveContext()
 
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-    // MARK: - Core Data stack
-    
-
-    lazy var persistentContainer: NSPersistentContainer = {
-        /*
-         The persistent container for the application. This implementation
-         creates and returns a container, having loaded the store for the
-         application to it. This property is optional since there are legitimate
-         error conditions that could cause the creation of the store to fail.
-         */
-        let container = NSPersistentContainer(name: "User")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error as NSError? {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                
-                /*
-                 Typical reasons for an error here include:
-                 * The parent directory does not exist, cannot be created, or disallows writing.
-                 * The persistent store is not accessible, due to permissions or data protection when the device is locked.
-                 * The device is out of space.
-                 * The store could not be migrated to the current model version.
-                 Check the error message to determine what the actual problem was.
-                 */
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
-        })
-        return container
-    }()
-    
-    // MARK: - Core Data Saving support
-    
-    func saveContext () {
-        let context = persistentContainer.viewContext
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-            }
-        }
-    }
-    
 }
 
 

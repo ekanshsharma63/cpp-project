@@ -18,12 +18,19 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>googlechromes</string>
+		<string>comgooglemaps</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>allow for camera</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>access for location</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Please allow to locate </string>
+	<string>access location when needed</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>allow</string>
 	<key>UILaunchStoryboardName</key>
